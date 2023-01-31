@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 import pickle
 import numpy as np
+import os
 
 model = pickle.load(open('modelRF.pkl', 'rb'))
 
@@ -37,4 +38,5 @@ def predict():
 
 
 if __name__ == '__main__':
+    port = int(os.environ.get("PORT", 5000))
     app.run(debug=True)
