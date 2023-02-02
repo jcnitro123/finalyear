@@ -29,12 +29,15 @@ def predict():
     input_query = np.array([[age, gender, symptom_1, symptom_2, symptom_3, symptom_4, symptom_5, symptom_6, symptom_7,
                              symptom_8, symptom_9]])
 
-    predictions = model.predict_proba(input_query)[0]
-    top3_indexes = predictions.argsort()[-3:][::-1]
-    top3_results = [model.classes_[i] for i in top3_indexes]
+#     predictions = model.predict_proba(input_query)[0]
+#     top3_indexes = predictions.argsort()[-3:][::-1]
+#     top3_results = [model.classes_[i] for i in top3_indexes]
 
-    return jsonify({'top3_diseases': top3_results})
+#     return jsonify({'top3_diseases': top3_results})
 
+    result = model.predict(input_query)[0]
+
+    return jsonify({'disease':str(result)})
 
 if __name__ == '__main__':
     app.run(debug=True)
