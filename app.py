@@ -12,7 +12,7 @@ def index():
     return "D-DOC API ML MODEL"
 
 
-@app.route('/predict', methods=['GET','POST'])
+@app.route('/predict', methods=['POST'])
 def predict():
     age = request.form.get('age')
     gender = request.form.get('gender')
