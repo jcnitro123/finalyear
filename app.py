@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 import pickle
 import numpy as np
-import os
 
 model = pickle.load(open('modelRF.pkl', 'rb'))
 
@@ -13,7 +12,7 @@ def home():
     return "D-DOC API ML MODEL"
 
 
-@app.route('/predict', methods=['POST'])
+@app.route('/predict', methods=['GET','POST'])
 def predict():
     age = request.form.get('age')
     gender = request.form.get('gender')
