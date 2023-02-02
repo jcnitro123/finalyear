@@ -8,7 +8,7 @@ app = Flask(__name__)
 
 
 @app.route('/')
-def home():
+def index():
     return "D-DOC API ML MODEL"
 
 
