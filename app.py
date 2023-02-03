@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import pickle
 import numpy as np
 
-model = pickle.load(open('modelRF.pkl', 'rb'))
+model = pickle.load(open('modelRFv2.pkl', 'rb'))
 
 app = Flask(__name__)
 
@@ -33,7 +33,7 @@ def predict():
     top3_indexes = predictions.argsort()[-3:][::-1]
     top3_results = [model.classes_[i] for i in top3_indexes]
 
-    return jsonify({'top3_diseases':str (top3_results)})
+    return jsonify({'3_possible_diseases':str (top3_results)})
 
 
 if __name__ == '__main__':
